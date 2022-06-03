@@ -1,4 +1,4 @@
-using StarterAssets;
+using PlayerInputs;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,13 +9,13 @@ public class DragHandler : MonoBehaviour
     , IEndDragHandler
 
 {
-    private StarterAssetsInputs inputs;
+    private PlayerObject inputs;
+    public PlayerObject player;
 
     // Start is called before the first frame update
     void Start()
     {
-        var player = GameObject.FindGameObjectWithTag("Player");
-        inputs = player.GetComponent<StarterAssetsInputs>();
+        inputs = player.GetComponent<PlayerObject>();
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class DragHandler : MonoBehaviour
     {
         var delta = eventData.delta;
         delta.y *= -1;
-        delta /= 50;
+        delta /= 1;
         Debug.Log(delta);
         inputs.LookInput(delta);
     }
