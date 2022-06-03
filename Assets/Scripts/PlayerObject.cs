@@ -12,6 +12,7 @@ namespace PlayerInputs
     {
         [SerializeField] public Block block;
         [SerializeField] float speed = 5f;
+        float _realSpeed;
         Vector3[] destinations;
         int num = -1;
 
@@ -48,18 +49,14 @@ namespace PlayerInputs
         {
             if (num >= 0)
             {
-                if (transform.position.y != destinations[num].y) // 다른 블록의 waypoint인 걸 y값이 다른 걸로 구분
+                transform.position = Vector3.MoveTowards(transform.position, destinations[num], _realSpeed * Time.deltaTime);
+                if (transform.position == destinations[num])
                 {
-                    transform.position = destinations[num];
-                    //Thread.Sleep((int)(0.5 / speed * 1000));    // 거리 / 속도 * ms/s
                     num++;
-                }
-                else
-                {
-                    transform.position = Vector3.MoveTowards(transform.position, destinations[num], speed * Time.deltaTime);
-                    if (transform.position == destinations[num])
+                    _realSpeed = speed;
+                    if (transform.position.y != destinations[num].y) // 다른 블록의 waypoint인 걸 y값이 다른 걸로 구분
                     {
-                        num++;
+                        _realSpeed *= (transform.position - destinations[num]).magnitude;
                     }
                 }
 
@@ -68,6 +65,10 @@ namespace PlayerInputs
                     num = -1;
                     return;
                 }
+            }
+            else
+            {
+                _realSpeed = speed;
             }
         }
 
