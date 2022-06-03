@@ -15,6 +15,7 @@ namespace PlayerInputs
         float _realSpeed;
         Vector3[] destinations;
         int num = -1;
+        public bool isMoving = false;
 
         public Vector2 look;
         [Header("Cinemachine")]
@@ -63,6 +64,7 @@ namespace PlayerInputs
                 if (destinations[num] == Vector3.down)  // 마지막 destination이라는 신호
                 {
                     num = -1;
+                    isMoving = false;
                     return;
                 }
             }
@@ -79,6 +81,7 @@ namespace PlayerInputs
 
         public void moveSet(Vector3[] _destinations)
         {
+            isMoving = true;
             destinations = _destinations;
             num = 0;
         }
