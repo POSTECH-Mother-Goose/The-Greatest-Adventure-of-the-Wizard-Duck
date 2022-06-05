@@ -35,6 +35,8 @@ namespace PlayerInputs
         private float _cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
 
+        private GameObject indicator;
+
         private PlayerInput _playerInput;
 
         private const float _threshold = 0.01f;
@@ -49,16 +51,18 @@ namespace PlayerInputs
         void Start()
         {
             _playerInput = GetComponent<PlayerInput>();
+            indicator = GameObject.FindGameObjectsWithTag("Indicator")[0];
             anim.SetBool("isWalk", false);
         }
 
         // Update is called once per frame
         void Update()
         {
+            indicator.transform.position = transform.position;
             if (num >= 0)
             {
                 transform.position = Vector3.MoveTowards(transform.position, destinations[num], _realSpeed * Time.deltaTime);
-                transform.LookAt(destinations[num]);    // ¿Ã∞≈ æ» ∏‘»˚ §–§–
+                transform.LookAt(new Vector3(destinations[num].x, transform.position.y, destinations[num].z));
                 if (transform.position == destinations[num])
                 {
                     num++;
