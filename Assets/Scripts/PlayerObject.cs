@@ -11,7 +11,8 @@ namespace PlayerInputs
     public class PlayerObject : MonoBehaviour
     {
         [SerializeField] public Block block;
-        [SerializeField] float speed = 5f;
+        [SerializeField] float speed = 2f;
+        private Animator anim;
         float _realSpeed;
         Vector3[] destinations;
         int num = -1;
@@ -39,10 +40,16 @@ namespace PlayerInputs
         private const float _threshold = 0.01f;
         private bool IsCurrentDeviceMouse => _playerInput.currentControlScheme == "KeyboardMouse";
 
+        private void Awake()
+        {
+            anim = GetComponentInChildren<Animator>();
+        }
+
         // Start is called before the first frame update
         void Start()
         {
             _playerInput = GetComponent<PlayerInput>();
+            anim.SetBool("isWalk", false);
         }
 
         // Update is called once per frame
@@ -51,6 +58,7 @@ namespace PlayerInputs
             if (num >= 0)
             {
                 transform.position = Vector3.MoveTowards(transform.position, destinations[num], _realSpeed * Time.deltaTime);
+                transform.LookAt(destinations[num]);    // ¿Ã∞≈ æ» ∏‘»˚ §–§–
                 if (transform.position == destinations[num])
                 {
                     num++;
@@ -65,6 +73,7 @@ namespace PlayerInputs
                 {
                     num = -1;
                     isMoving = false;
+                    anim.SetBool("isWalk", false);
                     return;
                 }
             }
@@ -82,6 +91,7 @@ namespace PlayerInputs
         public void moveSet(Vector3[] _destinations)
         {
             isMoving = true;
+            anim.SetBool("isWalk", true);
             destinations = _destinations;
             num = 0;
         }
