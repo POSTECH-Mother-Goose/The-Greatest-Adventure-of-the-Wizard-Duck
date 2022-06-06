@@ -8,17 +8,21 @@ public class Move : MonoBehaviour
     [SerializeField] Block[] blockList;
     public Camera cam;
     public PlayerObject player;
+    public DragHandler dragHandler;
+    public Scoring scoring;
+    private AudioSource soundEffect;
 
     // Start is called before the first frame update
     void Start()
     {
         //Vector3 pos = cam.WorldToScreenPoint(cube.transform.position);        
+        soundEffect = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonUp(0) && !player.isMoving)
+        if (Input.GetMouseButtonDown(0) && !player.isMoving && !dragHandler.isDragging && !scoring.isEnd && !scoring.isGameOver)
         {
             RaycastHit hit;
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -35,6 +39,7 @@ public class Move : MonoBehaviour
                 Vector3[] destinations = playerWayPointSet(hitBlock.idx, dest);
                 player.moveSet(destinations);
                 Scoring.increaseClick();
+                soundEffect.Play();
             }
         }
     }
