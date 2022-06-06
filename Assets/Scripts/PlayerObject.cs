@@ -62,7 +62,6 @@ namespace PlayerInputs
             if (num >= 0)
             {
                 transform.position = Vector3.MoveTowards(transform.position, destinations[num], _realSpeed * Time.deltaTime);
-                transform.LookAt(new Vector3(destinations[num].x, transform.position.y, destinations[num].z));
                 if (transform.position == destinations[num])
                 {
                     num++;
@@ -70,6 +69,17 @@ namespace PlayerInputs
                     if (transform.position.y != destinations[num].y) // 다른 블록의 waypoint인 걸 y값이 다른 걸로 구분
                     {
                         _realSpeed *= (transform.position - destinations[num]).magnitude;
+                    }
+                    else
+                    {
+                        transform.LookAt(destinations[num]);
+                    }
+                }
+                else
+                {
+                    if (transform.position.y == destinations[num].y)
+                    {
+                        transform.LookAt(destinations[num]);
                     }
                 }
 
