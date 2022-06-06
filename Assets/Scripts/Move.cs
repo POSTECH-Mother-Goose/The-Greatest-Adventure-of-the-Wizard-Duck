@@ -8,6 +8,7 @@ public class Move : MonoBehaviour
     [SerializeField] Block[] blockList;
     public Camera cam;
     public PlayerObject player;
+    public DragHandler dragHandler;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,7 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonUp(0) && !player.isMoving)
+        if (Input.GetMouseButtonDown(0) && !player.isMoving && !dragHandler.isDragging)
         {
             RaycastHit hit;
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);

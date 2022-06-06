@@ -5,10 +5,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class DragHandler : MonoBehaviour
+    , IBeginDragHandler
     , IDragHandler
     , IEndDragHandler
 
 {
+    public bool isDragging = false;
     private PlayerObject inputs;
     public PlayerObject player;
 
@@ -22,6 +24,11 @@ public class DragHandler : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        isDragging = true;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -38,5 +45,6 @@ public class DragHandler : MonoBehaviour
         Scoring.increaseDrag();
         Debug.Log("end drag");
         inputs.LookInput(new Vector2(0, 0));
+        isDragging = false;
     }
 }
