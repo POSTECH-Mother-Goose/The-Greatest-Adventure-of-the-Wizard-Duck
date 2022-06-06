@@ -12,15 +12,18 @@ public class AnimatedWater : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        curX = GetComponent<Renderer>().material.mainTextureOffset.x;
-        curY = GetComponent<Renderer>().material.mainTextureOffset.y;
+        // curX = GetComponent<MeshRenderer>().material.mainTextureOffset.x;
+        curX = 0;
+        curY = GetComponent<MeshRenderer>().material.mainTextureOffset.y;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        curX += Time.deltaTime * speedX;
-        curY += Time.deltaTime * speedY;
-        GetComponent<Renderer>().material.SetTextureOffset("_MainTex", new Vector2(curX, curY));
+        // curX += Time.deltaTime * speedX;
+        curY -= Time.deltaTime * speedY;
+        gameObject.GetComponent<Renderer>().material.mainTextureOffset = new Vector2(curX, curY);
+        gameObject.GetComponent<MeshRenderer>().material.mainTextureOffset = new Vector2(curX, curY);
+        gameObject.GetComponent<MeshRenderer>().material.SetTextureOffset("_MainTex", new Vector2(curX, curY));
     }
 }
