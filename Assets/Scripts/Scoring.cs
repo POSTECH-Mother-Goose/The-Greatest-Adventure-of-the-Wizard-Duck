@@ -10,6 +10,8 @@ public class Scoring : MonoBehaviour
     private static int drag = 0;
     private static int score;
 
+    private bool isEnd = false;
+
     public Text clickCount;
     public Text dragCount;
     public Text scoreText;
@@ -31,10 +33,13 @@ public class Scoring : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        clickCount.text = "Click Count : " + click;
-        dragCount.text = "Drag Count  : " + drag;
-        score = SCORE_INIT - (click * 10 + drag);
-        scoreText.text = "Score       : " + score;
+        if (!isEnd)
+        {
+            clickCount.text = "Click Count : " + click;
+            dragCount.text = "Drag Count  : " + drag;
+            score = SCORE_INIT - (click * 10 + drag);
+            scoreText.text = "Score       : " + score;
+        }
     }
 
     public static void increaseClick()
@@ -52,6 +57,7 @@ public class Scoring : MonoBehaviour
         int highscore;
         highscore = PlayerPrefs.GetInt("Highscore");
         Debug.Log(highscore);
+        isEnd = true;
 
         stars[0].texture = score > 500 ? star_full : star_empty;
         stars[1].texture = score > 700 ? star_full : star_empty;

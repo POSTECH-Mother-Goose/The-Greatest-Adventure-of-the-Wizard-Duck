@@ -29,5 +29,6 @@ public class Ending : MonoBehaviour
 
         Destroy(GetComponentInChildren<Rigidbody>());
         scoring.Ending();
+        gameObject.SetActive(false);
     }
 }
