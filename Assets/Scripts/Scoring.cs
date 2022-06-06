@@ -17,6 +17,8 @@ public class Scoring : MonoBehaviour
     public Text dragCount;
     public Text scoreText;
     public Text highscoreText;
+    public Text endText;
+    public Text gameoverText;
     public RawImage[] stars;
 
     public Texture star_empty;
@@ -44,6 +46,7 @@ public class Scoring : MonoBehaviour
             if (score <= 0)
             {
                 isGameOver = true;
+                gameoverText.text = "GAME OVER";
             }
         }
     }
@@ -64,6 +67,7 @@ public class Scoring : MonoBehaviour
         highscore = PlayerPrefs.GetInt("Highscore");
         Debug.Log(highscore);
         isEnd = true;
+        endText.text = "THE END";
 
         stars[0].texture = score > 0 ? star_full : star_empty;
         stars[1].texture = score > 100 ? star_full : star_empty;
