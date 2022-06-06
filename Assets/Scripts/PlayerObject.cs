@@ -17,6 +17,7 @@ namespace PlayerInputs
         Vector3[] destinations;
         int num = -1;
         public bool isMoving = false;
+        public Ending ending;
 
         public Vector2 look;
         [Header("Cinemachine")]
@@ -106,6 +107,7 @@ namespace PlayerInputs
         public void setEnd()
         {
             anim.SetTrigger("isEnd");
+            transform.LookAt(ending.transform.position);
         }
 
         private void LateUpdate()
