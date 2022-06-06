@@ -107,7 +107,6 @@ namespace PlayerInputs
         public void setEnd()
         {
             anim.SetTrigger("isEnd");
-            transform.LookAt(ending.transform.position);
         }
 
         private void LateUpdate()

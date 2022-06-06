@@ -11,7 +11,7 @@ public class Block : MonoBehaviour
     [SerializeField] public Transform[] intersectPointPrev;
     [SerializeField] public Transform[] intersectPointNext;
 
-    public static float offsetDistance = 50.0f;
+    public static float offsetDistance = 70.0f;
 
     // Start is called before the first frame update
     void Start()
