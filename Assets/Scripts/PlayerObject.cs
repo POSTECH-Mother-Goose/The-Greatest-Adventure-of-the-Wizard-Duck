@@ -97,6 +97,11 @@ namespace PlayerInputs
             }
         }
 
+        public void setEnd()
+        {
+            anim.SetTrigger("isEnd");
+        }
+
         private void LateUpdate()
         {
             CameraRotation();
