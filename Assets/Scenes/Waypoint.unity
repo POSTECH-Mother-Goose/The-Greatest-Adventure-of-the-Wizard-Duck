@@ -7860,6 +7860,7 @@ GameObject:
   - component: {fileID: 8009626696189231178}
   - component: {fileID: 7451294487960988306}
   - component: {fileID: 4630405470353031134}
+  - component: {fileID: 3686022888105871115}
   m_Layer: 0
   m_Name: pasted__pasted__polySurface3
   m_TagString: Untagged
@@ -7867,6 +7868,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3686022888105871115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3686022888105871114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e08b31f43455ad4a90e95a214279077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedX: 0.1
+  speedY: 0.1
 --- !u!1 &3690010418901482601
 GameObject:
   m_ObjectHideFlags: 0
@@ -11555,6 +11570,7 @@ GameObject:
   - component: {fileID: 6095056092297619811}
   - component: {fileID: 6701844000398655078}
   - component: {fileID: 5288594229396281327}
+  - component: {fileID: 6259181198280249507}
   m_Layer: 0
   m_Name: pasted__polySurface3
   m_TagString: Untagged
@@ -11562,6 +11578,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6259181198280249507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6259181198280249506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e08b31f43455ad4a90e95a214279077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedX: 0.1
+  speedY: 0.1
 --- !u!1 &6259195811144497366
 GameObject:
   m_ObjectHideFlags: 0
@@ -11860,6 +11890,7 @@ GameObject:
   - component: {fileID: 5307982484059422998}
   - component: {fileID: 2019550654908651010}
   - component: {fileID: 6016538329170935768}
+  - component: {fileID: 6398080616043543161}
   m_Layer: 0
   m_Name: polySurface3
   m_TagString: Untagged
@@ -11867,6 +11898,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6398080616043543161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6398080616043543160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e08b31f43455ad4a90e95a214279077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedX: 0.1
+  speedY: 0.1
 --- !u!1 &6407129415189037256
 GameObject:
   m_ObjectHideFlags: 0
