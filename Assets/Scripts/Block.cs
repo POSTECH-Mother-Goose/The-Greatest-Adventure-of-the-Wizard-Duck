@@ -11,7 +11,7 @@ public class Block : MonoBehaviour
     [SerializeField] public Transform[] intersectPointPrev;
     [SerializeField] public Transform[] intersectPointNext;
 
-    public static float offsetDistance = 70.0f;
+    public static float offsetDistance = 25.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,6 @@ public class Block : MonoBehaviour
 
     public Vector3 getNearestPoint(Vector3 hitPos)
     {
-        Debug.Log("hitpos:" + hitPos);
         Vector3 lineStartPos, lineEndPos;
         Vector3 line;
         Vector3 hitLine;
@@ -52,7 +51,6 @@ public class Block : MonoBehaviour
                 nearestPoint = lineStartPos + projLine;
             }
         }
-        Debug.Log("near:"+nearestPoint);
         return nearestPoint + Vector3.up;
     }
 
@@ -106,7 +104,7 @@ public class Block : MonoBehaviour
         Vector3 nextScreen1 = Camera.main.WorldToScreenPoint(nextBlock.intersectPointPrev[1].position);
         float distance0 = (thisScreen0 - nextScreen0).magnitude;
         float distance1 = (thisScreen1 - nextScreen1).magnitude;
-        //Debug.Log("distance0: " + distance0 + "distance1: " + distance1);
+        Debug.Log("distance0: " + distance0 + "distance1: " + distance1);
         return (distance0 < offsetDistance && distance1 < offsetDistance) ? true : false;
     }
 }
