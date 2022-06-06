@@ -42,14 +42,14 @@ public class DragHandler : MonoBehaviour
         }
         delta.y *= -1;
         delta *= 3000 / Screen.width;
-        Debug.Log(delta);
+        //Debug.Log(delta);
         inputs.LookInput(delta);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         Scoring.increaseDrag();
-        Debug.Log("end drag");
+        //Debug.Log("end drag");
         inputs.LookInput(new Vector2(0, 0));
         isDragging = false;
     }
