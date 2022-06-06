@@ -28,7 +28,7 @@ public class DragHandler : MonoBehaviour
     {
         var delta = eventData.delta;
         delta.y *= -1;
-        delta /= 1;
+        delta *= Screen.width / 600;
         Debug.Log(delta);
         inputs.LookInput(delta);
     }
