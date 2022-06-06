@@ -34,6 +34,12 @@ public class DragHandler : MonoBehaviour
     public void OnDrag(PointerEventData eventData)
     {
         var delta = eventData.delta;
+        if (delta.x == 0.0f || delta.y == 0.0f)
+        {
+            inputs.LookInput(new Vector2(0, 0));
+            isDragging = false;
+            return;
+        }
         delta.y *= -1;
         delta *= 3000 / Screen.width;
         Debug.Log(delta);
