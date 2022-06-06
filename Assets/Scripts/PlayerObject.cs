@@ -66,7 +66,10 @@ namespace PlayerInputs
                 {
                     num++;
                     _realSpeed = speed;
-                    if (transform.position.y != destinations[num].y) // 다른 블록의 waypoint인 걸 y값이 다른 걸로 구분
+                    if (
+                        (transform.position.y != destinations[num].y) &&
+                        (transform.position - destinations[num]).sqrMagnitude > 10.0f
+                    ) // 다른 블록의 waypoint인 걸 y값이 다른 걸로 구분
                     {
                         _realSpeed *= (transform.position - destinations[num]).magnitude;
                     }
@@ -77,7 +80,10 @@ namespace PlayerInputs
                 }
                 else
                 {
-                    if (transform.position.y == destinations[num].y)
+                    if (
+                        (transform.position.y == destinations[num].y) ||
+                        (transform.position - destinations[num]).sqrMagnitude < 10.0f
+                    )
                     {
                         transform.LookAt(destinations[num]);
                     }
