@@ -34,6 +34,7 @@ public class Move : MonoBehaviour
                 Vector3 dest = hitBlock.getNearestPoint(hitPos);
                 Vector3[] destinations = playerWayPointSet(hitBlock.idx, dest);
                 player.moveSet(destinations);
+                Scoring.increaseClick();
             }
         }
     }

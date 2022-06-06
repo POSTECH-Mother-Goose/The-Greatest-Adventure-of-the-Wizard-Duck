@@ -35,6 +35,7 @@ public class DragHandler : MonoBehaviour
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        Scoring.increaseDrag();
         Debug.Log("end drag");
         inputs.LookInput(new Vector2(0, 0));
     }

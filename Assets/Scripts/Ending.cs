@@ -7,12 +7,12 @@ public class Ending : MonoBehaviour
 {
     private Animator anim;
     public PlayerObject player;
+    public Scoring scoring;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerObject>();
     }
 
     // Update is called once per frame
@@ -28,5 +28,6 @@ public class Ending : MonoBehaviour
         player.setEnd();
 
         Destroy(GetComponentInChildren<Rigidbody>());
+        scoring.Ending();
     }
 }
