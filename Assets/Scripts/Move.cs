@@ -28,7 +28,7 @@ public class Move : MonoBehaviour
                 GameObject hitObj = hit.collider.gameObject.transform.parent.gameObject;
                 Block hitBlock = hitObj.GetComponent<Block>();
                 if (hitBlock == null) return;
-                Vector3 hitPos = hit.transform.position;
+                Vector3 hitPos = hit.point;
 
                 if (!checkCanGo(player.block.idx, hitBlock.idx)) return;
                 Vector3 dest = hitBlock.getNearestPoint(hitPos);
