@@ -25,6 +25,7 @@ public class Block : MonoBehaviour
         
     }
 
+    // Projection을 통해 가장 가까운 line과 point를 구함
     public Vector3 getNearestPoint(Vector3 hitPos)
     {
         Vector3 lineStartPos, lineEndPos;
@@ -45,10 +46,25 @@ public class Block : MonoBehaviour
             projLine = Vector3.Project(hitLine, line);
             orthoLine = hitLine - projLine;
             distance = orthoLine.magnitude;
+            if ((line + projLine).magnitude < line.magnitude)   // hitpoint가 startpoint보다 앞에 있음
+            {
+                distance = (hitPos - lineStartPos).magnitude;
+            }
+            else if (projLine.magnitude > line.magnitude)     // hitpoint가 endpoint보다 뒤에 있음
+            {
+                distance = (hitPos - lineEndPos).magnitude;
+            }
             if (distance < shortestDistance)
             {
                 shortestDistance = distance;
                 nearestPoint = lineStartPos + projLine;
+                if ((line + projLine).magnitude < line.magnitude)   // hitpoint가 startpoint보다 앞에 있음
+                {
+                    nearestPoint = lineStartPos;
+                } else if (projLine.magnitude > line.magnitude)     // hitpoint가 endpoint보다 뒤에 있음
+                {
+                    nearestPoint = lineEndPos;
+                }
             }
         }
         return nearestPoint + Vector3.up;
@@ -75,6 +91,14 @@ public class Block : MonoBehaviour
             projLine = Vector3.Project(hitLine, line);
             orthoLine = hitLine - projLine;
             distance = orthoLine.magnitude;
+            if ((line + projLine).magnitude < line.magnitude)   // hitpoint가 startpoint보다 앞에 있음
+            {
+                distance = (pos - lineStartPos).magnitude;
+            }
+            else if (projLine.magnitude > line.magnitude)     // hitpoint가 endpoint보다 뒤에 있음
+            {
+                distance = (pos - lineEndPos).magnitude;
+            }
             if (distance < shortestDistance)
             {
                 shortestDistance = distance;
@@ -104,7 +128,7 @@ public class Block : MonoBehaviour
         Vector3 nextScreen1 = Camera.main.WorldToScreenPoint(nextBlock.intersectPointPrev[1].position);
         float distance0 = (thisScreen0 - nextScreen0).magnitude;
         float distance1 = (thisScreen1 - nextScreen1).magnitude;
-        Debug.Log("distance0: " + distance0 + "distance1: " + distance1);
+        //Debug.Log("distance0: " + distance0 + "distance1: " + distance1);
         return (distance0 < offsetDistance && distance1 < offsetDistance) ? true : false;
     }
 }

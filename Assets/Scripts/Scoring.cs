@@ -65,7 +65,7 @@ public class Scoring : MonoBehaviour
     {
         int highscore;
         highscore = PlayerPrefs.GetInt("Highscore");
-        Debug.Log(highscore);
+        //Debug.Log(highscore);
         isEnd = true;
         endText.text = "THE END";
 

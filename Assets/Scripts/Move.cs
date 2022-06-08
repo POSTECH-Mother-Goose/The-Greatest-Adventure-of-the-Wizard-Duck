@@ -60,7 +60,6 @@ public class Move : MonoBehaviour
                 if (!blockList[idx1].intersectPrevBlock()) return false;
             }
         }
-        Debug.Log("can go");
         return true;
     }
     Vector3[] playerWayPointSet(int destBlockIdx, Vector3 dest)
